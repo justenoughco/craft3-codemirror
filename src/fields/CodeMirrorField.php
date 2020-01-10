@@ -177,6 +177,13 @@ class CodeMirrorField extends Field
 				editor.on('change', function() {
 					editor.save();
 				});
+				// Fix issues with LivePreview
+				function refreshEditor() {
+					editor.refresh();
+					setTimeout(refreshEditor, 1000);
+				};
+				refreshEditor();
+				// endfix
 			})();
 		");
 		
